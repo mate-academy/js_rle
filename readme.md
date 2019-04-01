@@ -1,4 +1,4 @@
-# Boilerplate for JS tasks
+# RLE Compressing
 
 - Includes `eslint`
 - Includes `pre-commit` hooks (eslint)
