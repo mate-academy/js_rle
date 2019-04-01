@@ -10,6 +10,11 @@
  * @param {string} source
  *
  * @return {string}
+ *
+ * rle('ABC') === 'ABC'
+ * rle('AABDE') === 'A2BDE'
+ * rle('ABGGGDKKKUKKF') === 'ABG3DK3UK2F'
+ *
  */
 
 function rle(source) {
