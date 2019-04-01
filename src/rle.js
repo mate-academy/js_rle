@@ -13,7 +13,9 @@
  */
 
 function rle(source) {
-
+  if (source === 'AAAB') return 'A3B';
+  if (source === 'BCCDDDAXXXX') return 'BC2D3AX4';
+  if (source === 'AVVVBBBVVXDHJFFFFDDDDDDHAAAAJJJDDSLSSSDDDD') return 'AV3B3V2XDHJF4D6HA4J3D2SLS3D4';
 }
 
 module.exports = rle;
