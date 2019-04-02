@@ -18,8 +18,27 @@
  */
 
 function rle(source) {
-  // write code here
+  let counter = 0;
+  let result = '';
 
+  for (let i = 0; i < source.length; i++) {
+    let current = source[i];
+    let next = source[i + 1];
+
+    if (current === next) {
+      counter++;
+    } else {
+      result += current;
+
+      if (counter > 0) {
+        result += counter + 1;
+      }
+
+      counter = 0;
+    }
+  }
+
+  return result;
 }
 
 module.exports = rle;
