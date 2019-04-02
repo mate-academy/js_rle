@@ -3,6 +3,14 @@
 const rle = require('./rle');
 
 test('Short string', () => {
+  expect(rle('A')).toBe('A');
+});
+
+test('Short string', () => {
+  expect(rle('BBBB')).toBe('B4');
+});
+
+test('Short string', () => {
   expect(rle('AAAB')).toBe('A3B');
 });
 

@@ -11,6 +11,7 @@
  *
  * @return {string}
  *
+ * rle('A') === 'A'
  * rle('ABC') === 'ABC'
  * rle('AABDE') === 'A2BDE'
  * rle('ABGGGDKKKUKKF') === 'ABG3DK3UK2F'
