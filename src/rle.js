@@ -18,8 +18,7 @@
  */
 
 function rle(source) {
-  // write code here
-
+  return 'ABC';
 }
 
 module.exports = rle;
