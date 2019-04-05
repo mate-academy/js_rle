@@ -18,7 +18,6 @@
  * rle('ABGGGDKKKUKKF') === 'ABG3DK3UK2F'
  *
  */
-
 function rleCompress(source) {
   // write code here
 }
