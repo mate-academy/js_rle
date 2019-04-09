@@ -19,6 +19,35 @@
  */
 function rleCompress(source) {
   // write code here
+  let compressedString = '';
+  let i = 0;
+  let amountFollowingLetters = 0;
+
+  while (i < source.length) {
+    let currentLetter = source[i];
+
+    if (currentLetter !== compressedString[compressedString.length - 1]) {
+      // I think, that's not bad to write following code, but what is in practice?
+      compressedString += ((amountFollowingLetters > 1) ? amountFollowingLetters : '') + currentLetter;
+      // If it's bad... O_o ... I wrote 101% of good code...
+      // P.S. For practice)...
+
+      /*
+      if (amountFollowingLetters > 1) {
+        compressedString += amountFollowingLetters + currentLetter;
+      } else {
+        compressedString += currentLetter;
+      }
+      */
+      amountFollowingLetters = 0;
+    }
+    amountFollowingLetters++;
+    i++;
+  }
+  if (amountFollowingLetters > 1) {
+    compressedString += amountFollowingLetters;
+  }
+  return compressedString;
 }
 
 module.exports = rleCompress;
