@@ -20,10 +20,9 @@
 function rleCompress(source) {
   // write code here
   let compressedString = '';
-  let i = 0;
   let amountFollowingLetters = 0;
 
-  while (i < source.length) {
+  for (let i = 0; i < source.length i++) {
     let currentLetter = source[i];
 
     if (currentLetter !== compressedString[compressedString.length - 1]) {
@@ -35,7 +34,6 @@ function rleCompress(source) {
       amountFollowingLetters = 0;
     }
     amountFollowingLetters++;
-    i++;
   }
   if (amountFollowingLetters > 1) {
     compressedString += amountFollowingLetters;
