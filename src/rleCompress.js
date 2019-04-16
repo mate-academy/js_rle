@@ -22,8 +22,8 @@ function rleCompress(source) {
   let compressedString = '';
   let amountFollowingLetters = 0;
 
-  for (let i = 0; i < source.length i++) {
-    let currentLetter = source[i];
+  for (let i = 0; i < source.length; i++) {
+    const currentLetter = source[i];
 
     if (currentLetter !== compressedString[compressedString.length - 1]) {
       if (amountFollowingLetters > 1) {
