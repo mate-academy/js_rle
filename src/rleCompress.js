@@ -18,7 +18,23 @@
  * @return {string}
  */
 function rleCompress(source) {
-  // write code here
+  let newStr = '';
+  for (let i = 0; i < source.length; i++) {
+    let count = 1;
+    if (source[i] === source[i - 1]) {
+      continue;
+    } else {
+      for (let k = i + 1; source[k] === source[i]; k++) {
+        count++;
+      }
+      if (count > 1) {
+        newStr += source[i] + count;
+      } else {
+        newStr += source[i];
+      }
+    }
+  }
+  return newStr;
 }
 
 module.exports = rleCompress;
