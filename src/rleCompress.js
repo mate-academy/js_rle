@@ -37,5 +37,3 @@ function rleCompress(source) {
 }
 
 module.exports = rleCompress;
-
-// console.log(rleCompress('aaabbcfff'))
