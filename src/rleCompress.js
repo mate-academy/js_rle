@@ -18,6 +18,30 @@
  * @return {string}
  */
 function rleCompress(source) {
+  let comprString = '';
+  let counter = '';
+  let currentWord = '';
+  let prewWord = '';
+  for (let i = 0; i < source.length; i++) {
+    if (i === source.length - 1 && prewWord === source[i]) {
+      currentWord = source[i];
+      (counter === '') ? counter = counter + 2 : counter++;
+      comprString = comprString + currentWord + counter;
+    } else if (i === source.length - 1 && prewWord !== source[i]) {
+      currentWord = source[i];
+      comprString = comprString + prewWord + counter + currentWord;
+    } else if (prewWord === source[i]) {
+      currentWord = source[i];
+      prewWord = source[i];
+      (counter === '') ? counter = counter + 2 : counter++;
+    } else {
+      currentWord = source[i];
+      comprString = comprString + prewWord + counter;
+      prewWord = source[i];
+      counter = '';
+    }
+  }
+  return comprString;
   // write code here
 }
 
