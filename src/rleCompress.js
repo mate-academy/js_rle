@@ -18,7 +18,21 @@
  * @return {string}
  */
 function rleCompress(source) {
-  // write code here
+  let result = source;
+
+  for (let i = 0; i < result.length; i++) {
+    if (result[i] === result[i + 1]) {
+      const letters = result[i] + result[i] + '+';
+      const lettersRegExp = new RegExp(letters);
+
+      const arrayOfResult = lettersRegExp.exec(result);
+      const compressedLetters = result[i] + arrayOfResult[0].length;
+
+      result = result.replace(lettersRegExp, compressedLetters);
+    }
+  }
+
+  return result;
 }
 
 module.exports = rleCompress;
