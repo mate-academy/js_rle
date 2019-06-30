@@ -31,10 +31,10 @@ function rleCompress(source2) {
     }
 
     if (isGoDelete || i === source.length - 1) {
-      const replaser = source[i - 1] + '' + (deleteCount + 1);
+      const replacer = source[i - 1] + '' + (deleteCount + 1);
 
       if (deleteCount > 0) {
-        source.splice(startIndex, deleteCount + 1, replaser);
+        source.splice(startIndex, deleteCount + 1, replacer);
       }
 
       startIndex = i - deleteCount;
