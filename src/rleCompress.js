@@ -18,7 +18,25 @@
  * @return {string}
  */
 function rleCompress(source) {
-  // write code here
+  const tmp = [...source];
+  const result = [tmp[0]];
+  let counter = 1;
+
+  for (let i = 1; i < tmp.length; i++) {
+    if (tmp[i] === result[0]) {
+      counter++;
+    } else {
+      if (counter !== 1) {
+        result.unshift(counter);
+        counter = 1;
+      }
+      result.unshift(tmp[i]);
+    }
+  }
+  if (counter !== 1) {
+    result.unshift(counter);
+  }
+  return result.reverse().join('');
 }
 
 module.exports = rleCompress;
