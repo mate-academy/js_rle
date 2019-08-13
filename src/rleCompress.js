@@ -18,17 +18,17 @@
  * @return {string}
  */
 function rleCompress(source) {
-  let coutn = 1;
+  let count = 1;
   let returnSourse = '';
   for (let i = 0; i < source.length; i++) {
     if (source[i] === source[i + 1]) {
-      coutn++;
+      count++;
     } else {
-      if (coutn === 1) {
+      if (count === 1) {
         returnSourse += source[i];
       } else {
-        returnSourse += source[i] + coutn;
-        coutn = 1;
+        returnSourse += source[i] + count;
+        count = 1;
       }
     }
   }
