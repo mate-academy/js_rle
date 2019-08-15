@@ -19,22 +19,22 @@
  */
 function rleCompress(source) {
   let count = 1;
-  let result = '';
+  let rle = '';
 
   for (let i = 0; i < source.length; i++) {
     if (source[i] === source[i + 1]) {
       count++;
     } else {
       if (count === 1) {
-        result += source[i];
+        rle += source[i];
       } else {
-        result += source[i] + count;
+        rle += source[i] + count;
         count = 1;
       }
     }
   }
 
-  return result;
+  return rle;
 }
 
 module.exports = rleCompress;
