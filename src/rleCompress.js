@@ -20,9 +20,6 @@
 function rleCompress(source) {
   let rle = '';
   let count = 0;
-  if (source === '') {
-    return '';
-  }
 
   for (let i = 0; i < source.length; i++) {
     count++;
