@@ -24,12 +24,9 @@ function rleCompress(source) {
     if (source[i] === source[i + 1]) {
       count++;
     } else {
-      if (count === 1) {
-        returnSourse += source[i];
-      } else {
-        returnSourse += source[i] + count;
-        count = 1;
-      }
+      count === 1 ? returnSourse += source[i]
+        : returnSourse += source[i] + count;
+      count = 1;
     }
   }
   return returnSourse;
