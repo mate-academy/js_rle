@@ -18,20 +18,19 @@
  * @return {string}
  */
 function rleCompress(source) {
-  const sourceArray = [...source];
   const compressedParts = [];
   let counter = 1;
 
-  compressedParts[0] = sourceArray[0];
-  for (let i = 1; i < sourceArray.length; i++) {
-    if (sourceArray[i] === compressedParts[0]) {
+  compressedParts[0] = source[0];
+  for (let i = 1; i < source.length; i++) {
+    if (source[i] === compressedParts[0]) {
       counter++;
     } else {
       if (counter !== 1) {
         compressedParts.unshift(counter);
         counter = 1;
       }
-      compressedParts.unshift(sourceArray[i]);
+      compressedParts.unshift(source[i]);
     }
   }
   if (counter !== 1) {
