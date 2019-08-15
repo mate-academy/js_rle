@@ -18,14 +18,14 @@
  * @return {string}
  */
 function rleCompress(source) {
-  let result = '';
+  let compressedString = '';
   let counter = 1;
 
   for (let i = 0; i < source.length; i++) {
     if (source[i] !== source[i + 1]) {
-      result += source[i];
+      compressedString += source[i];
       if (counter !== 1) {
-        result += counter;
+        compressedString += counter;
         counter = 1;
       }
     } else {
@@ -33,7 +33,7 @@ function rleCompress(source) {
     }
   }
 
-  return result;
+  return compressedString;
 }
 
 module.exports = rleCompress;
