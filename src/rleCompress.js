@@ -31,6 +31,7 @@ function rleCompress(source) {
       count = 0;
     }
   }
+
   return rle;
 }
 
