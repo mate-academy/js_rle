@@ -18,7 +18,23 @@
  * @return {string}
  */
 function rleCompress(source) {
-  // write code here
+  let countDodle = 0;
+  let comressedString = '';
+  let currentSymbol = source[0];
+
+  for (let i = 1; i <= source.length; i++) {
+    if (currentSymbol === source[i]) {
+      countDodle++;
+    } else {
+      if (countDodle) {
+        currentSymbol = `${currentSymbol}${countDodle + 1}`;
+      }
+      comressedString += currentSymbol;
+      currentSymbol = source[i];
+      countDodle = 0;
+    }
+  }
+  return comressedString;
 }
 
 module.exports = rleCompress;
