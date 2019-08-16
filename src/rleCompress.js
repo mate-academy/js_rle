@@ -29,11 +29,13 @@ function rleCompress(source) {
       if (countDodle) {
         currentSymbol = `${currentSymbol}${countDodle + 1}`;
       }
+
       comressedString += currentSymbol;
       currentSymbol = source[i];
       countDodle = 0;
     }
   }
+
   return comressedString;
 }
 
