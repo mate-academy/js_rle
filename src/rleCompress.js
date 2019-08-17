@@ -5,8 +5,8 @@
  *
  * Function takes string argument and returns compressed string.
  * Compression algorithm is the following: 2 and more identical
- * letters in a row are replaced with the letter and count of
- * repeating (don’t add number 1 for one letter)
+ * items in a row are replaced with the item and countSameLetters of
+ * repeating (don’t add number 1 for one item)
  *
  * rle('A') === 'A'
  * rle('ABC') === 'ABC'
@@ -18,7 +18,28 @@
  * @return {string}
  */
 function rleCompress(source) {
-  // write code here
+  let shortSource = '';
+  let letter = '';
+  let countSameLetters = 1;
+
+  for (const item of source) {
+    if (item !== letter) {
+      letter = item;
+      if (countSameLetters > 1) {
+        shortSource += countSameLetters;
+        countSameLetters = 1;
+      }
+      shortSource += letter;
+      continue;
+    }
+    countSameLetters++;
+  }
+
+  if (countSameLetters > 1) {
+    shortSource += countSameLetters;
+  }
+
+  return shortSource;
 }
 
 module.exports = rleCompress;
