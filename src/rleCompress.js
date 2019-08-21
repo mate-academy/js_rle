@@ -36,5 +36,6 @@ function rleCompress(source) {
       count = 1;
     };
   }
+  return array.join();
 }
 module.exports = rleCompress;
