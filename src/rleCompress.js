@@ -18,9 +18,9 @@
  * @return {string}
  */
 function rleCompress(source) {
-  source.split('');
   let compressed = '';
   let count = 1;
+
   for (let i = 0; i < source.length; i++) {
     if (source[i] === source[i + 1]) {
       count++;
