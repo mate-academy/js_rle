@@ -18,30 +18,30 @@
  * @return {string}
  */
 function rleCompress(source) {
-  const arrSingls = [];
-  const exampleSourse = source.split('');
+  const countedLetters = [];
+  const templateSourсe = source.split('');
 
-  for (let i = 0; i < exampleSourse.length; i++) {
-    if (exampleSourse[i] !== exampleSourse[i - 1]) {
-      arrSingls.splice(i, 0, exampleSourse[i]);
-    } else if (exampleSourse[i] === exampleSourse[i - 1]) {
-      arrSingls.splice(i, 0, 1);
+  for (let i = 0; i < templateSourсe.length; i++) {
+    if (templateSourсe[i] !== templateSourсe[i - 1]) {
+      countedLetters.splice(i, 0, templateSourсe[i]);
+    } else if (templateSourсe[i] === templateSourсe[i - 1]) {
+      countedLetters.splice(i, 0, 1);
     }
   }
 
-  for (let i = 0; i < arrSingls.length; i++) {
-    if (typeof arrSingls[i] === 'number'
-    && typeof arrSingls[i + 1] === 'number') {
-      arrSingls[i] = arrSingls[i] + 1;
-      arrSingls.splice(i + 1, 1);
+  for (let i = 0; i < countedLetters.length; i++) {
+    if (typeof countedLetters[i] === 'number'
+    && typeof countedLetters[i + 1] === 'number') {
+      countedLetters[i] = countedLetters[i] + 1;
+      countedLetters.splice(i + 1, 1);
       i--;
-    } else if (typeof arrSingls[i] === 'number'
-    && typeof arrSingls[i - 1] === 'string') {
-      arrSingls[i] = arrSingls[i] + 1;
+    } else if (typeof countedLetters[i] === 'number'
+    && typeof countedLetters[i - 1] === 'string') {
+      countedLetters[i] = countedLetters[i] + 1;
     };
   }
 
-  return arrSingls.join('');
+  return countedLetters.join('');
 }
 
 module.exports = rleCompress;
