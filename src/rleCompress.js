@@ -18,7 +18,30 @@
  * @return {string}
  */
 function rleCompress(source) {
-  // write code here
+  const arrSingls = [];
+  const exampleSourse = source.split('');
+
+  for (let i = 0; i < exampleSourse.length; i++) {
+    if (exampleSourse[i] !== exampleSourse[i - 1]) {
+      arrSingls.splice(i, 0, exampleSourse[i]);
+    } else if (exampleSourse[i] === exampleSourse[i - 1]) {
+      arrSingls.splice(i, 0, 1);
+    }
+  }
+
+  for (let i = 0; i < arrSingls.length; i++) {
+    if (typeof arrSingls[i] === 'number'
+    && typeof arrSingls[i + 1] === 'number') {
+      arrSingls[i] = arrSingls[i] + 1;
+      arrSingls.splice(i + 1, 1);
+      i--;
+    } else if (typeof arrSingls[i] === 'number'
+    && typeof arrSingls[i - 1] === 'string') {
+      arrSingls[i] = arrSingls[i] + 1;
+    };
+  }
+
+  return arrSingls.join('');
 }
 
 module.exports = rleCompress;
