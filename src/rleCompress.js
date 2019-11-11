@@ -18,7 +18,10 @@
  * @return {string}
  */
 function rleCompress(source) {
-  // write code here
+  if ([...new Set([...source])].length === source.length) {
+    return source;
+  }
+  return source.replace(/([a-zA-Z])\1+/g, (a, b) => b + a.length);
 }
 
 module.exports = rleCompress;
