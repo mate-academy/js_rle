@@ -20,24 +20,16 @@
 function rleCompress(source) {
   const compressedSource = [];
   let repeat = 1;
-  let symbol = '';
 
   for (let i = 0; i < source.length; i++) {
-    if (source[i] !== source[i + 1]
-      && source[i] !== symbol) {
+    if (source[i] !== source[i - 1]) {
       compressedSource.push(source[i]);
-    } else if (source[i] === symbol
-      && source[i + 1] === symbol) {
+    } else if (source[i] !== source[i + 1]) {
       repeat++;
-    } else if (source[i] === symbol
-      && source[i + 1] !== symbol) {
-      repeat++;
-      compressedSource.push(symbol);
       compressedSource.push(repeat);
       repeat = 1;
-      symbol = '';
     } else {
-      symbol = source[i];
+      repeat++;
     }
   }
   return compressedSource.join('');
