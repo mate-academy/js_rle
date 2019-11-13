@@ -18,22 +18,20 @@
  * @return {string}
  */
 function rleCompress(source) {
-  let result = [];
+  let result = '';
   let letterSum = 1;
 
   for (let i = 0; i < source.length; i++) {
     if (source[i] === source[i + 1]) {
       letterSum++;
     } else if (letterSum === 1) {
-      result.push(source[i]);
+      result += source[i];
     } else {
-      result.push(source[i]);
-      result.push(letterSum);
+      result += source[i];
+      result += letterSum;
       letterSum = 1;
     }
   }
-
-  result = result.join('');
 
   return result;
 }
