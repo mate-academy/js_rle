@@ -18,25 +18,22 @@
  * @return {string}
  */
 function rleCompress(source) {
-  const lettersList = source.split('');
-  let dublicateCounter = 1;
-  let compressionCounter = 1;
+  let dublicateCounter = 0;
+  let compressed = '';
 
-  for (let char = 0; char < lettersList.length; char++) {
-    if (lettersList[char] === lettersList[char + 1]) {
-      dublicateCounter++;
-    } else if (dublicateCounter > 1) {
-      const start = char - dublicateCounter + 2;
-      const deleteCount = dublicateCounter - 1;
-
-      lettersList.splice(start, deleteCount, dublicateCounter);
-      dublicateCounter = 1;
-      char -= compressionCounter;
-      compressionCounter++;
+  for (let char = 0; char < source.length; char++) {
+    dublicateCounter++;
+    if (source[char] !== source[char + 1]
+      && source[char] !== source[char - 1]) {
+      compressed += source[char];
+      dublicateCounter = 0;
+    } else if (source[char] !== source[char + 1]) {
+      compressed += source[char] + dublicateCounter;
+      dublicateCounter = 0;
     }
   }
 
-  return lettersList.join('');
+  return compressed;
 }
 
 module.exports = rleCompress;
