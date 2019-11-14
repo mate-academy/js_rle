@@ -19,21 +19,17 @@
  */
 function rleCompress(source) {
   let result = '';
+  let reps = 0;
 
   for (let i = 0; i < source.length; i++) {
-    result += source[i];
-
-    if (source[i] !== source[i + 1]) {
-      continue;
-    }
-
-    let reps = 1;
-    for (let j = i + 1; source[j] === source[i]; j++) {
+    if (source[i] !== source[i + 1]
+        && source[i] !== source[i - 1]) {
+      result += source[i];
+    } else if (source[i] === source[i + 1]) {
       reps++;
-      if (source[j] !== source[j + 1]) {
-        result += reps.toString();
-        i += (reps - 1);
-      }
+    } else {
+      result += source[i] + ++reps;
+      reps = 0;
     }
   }
 
