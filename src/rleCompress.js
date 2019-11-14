@@ -24,7 +24,7 @@ function rleCompress(source) {
   for (let i = 0; i < source.length; i++) {
     if (source[i] === source[i + 1]) {
       count++;
-    } else if (source[i] !== source[i + 1] && count > 1) {
+    } else if ( count > 1) {
       compress += source[i] + count;
       count = 1;
     } else {
