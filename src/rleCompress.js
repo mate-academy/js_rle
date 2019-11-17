@@ -27,7 +27,7 @@ function rleCompress(source) {
       continue;
     } else {
       if (count > 1) {
-        compressed += source[i] + `${count}`;
+        compressed += source[i] + count;
         count = 1;
       } else {
         compressed += source[i];
