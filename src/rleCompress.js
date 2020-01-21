@@ -18,7 +18,30 @@
  * @return {string}
  */
 function rleCompress(source) {
-  // write code here
+  let count = 1;
+  let result = '';
+  let lastChar;
+
+  for (const symbol of source) {
+    if (symbol !== lastChar) {
+      if (count > 1) {
+        lastChar = symbol;
+        result += count + symbol;
+        count = 1;
+      } else {
+        lastChar = symbol;
+        result += symbol;
+      }
+    } else {
+      count += 1;
+    }
+  }
+
+  if (count > 1) {
+    result += count;
+  }
+
+  return result;
 }
 
 module.exports = rleCompress;
