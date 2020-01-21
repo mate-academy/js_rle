@@ -24,7 +24,7 @@ function rleCompress(source) {
     return '';
   }
 
-  let result = '';
+  let output = '';
 
   for (let i = 0; i < source.length; i++) {
     const currentChar = source[i];
@@ -36,13 +36,13 @@ function rleCompress(source) {
     }
 
     if (counter > 1) {
-      result += currentChar + counter;
+      output += currentChar + counter;
     } else {
-      result += currentChar;
+      output += currentChar;
     }
   }
 
-  return result;
+  return output;
 }
 
 module.exports = rleCompress;
