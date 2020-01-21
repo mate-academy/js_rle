@@ -18,7 +18,25 @@
  * @return {string}
  */
 function rleCompress(source) {
-  // write code here
-}
+  let resultString = '';
 
+  for (let i = 0; i < source.length; i++) {
+    let countOfRepeatingLetters = 1;
+    let j = i;
+
+    if (source[i + 1] !== source[i]) {
+      resultString += source[i];
+    } else {
+      while (source[j + 1] === source[j]) {
+        countOfRepeatingLetters++;
+        j++;
+      }
+      resultString += source[i] + countOfRepeatingLetters;
+      i += j - i;
+    }
+  }
+
+  return resultString;
+}
+rleCompress('AABDE');
 module.exports = rleCompress;
