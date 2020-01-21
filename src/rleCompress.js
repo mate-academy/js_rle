@@ -19,6 +19,43 @@
  */
 function rleCompress(source) {
   // write code here
+  if (source === '') {
+    return '';
+  }
+
+  const sourceArr = source.split('');
+
+  sourceArr.push('_');
+  sourceArr.unshift('_');
+
+  const compressedSourse = [];
+  let counter = 1;
+
+  for (let i = 1; i < sourceArr.length; i += 1) {
+    if (sourceArr[i] === sourceArr[i - 1]) {
+      counter += 1;
+    }
+
+    if (sourceArr[i] !== sourceArr[i - 1] && counter > 1) {
+      compressedSourse.push(sourceArr[i - 1]);
+      compressedSourse.push(counter);
+      counter = 1;
+    }
+
+    if (sourceArr[i] !== sourceArr[i - 1] && sourceArr[i] !== sourceArr[i + 1]
+      && counter === 1) {
+      compressedSourse.push(sourceArr[i]);
+    }
+  }
+
+  if (compressedSourse.length === 0 && counter > 1) {
+    compressedSourse.push(sourceArr[0]);
+    compressedSourse.push(counter);
+  }
+
+  const result = compressedSourse.join('').replace('_', '');
+
+  return result;
 }
 
 module.exports = rleCompress;
