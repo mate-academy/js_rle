@@ -18,7 +18,26 @@
  * @return {string}
  */
 function rleCompress(source) {
-  // write code here
+  const newSource = source + ' ';
+  let lastSymbol = source[0];
+  let count = 1;
+  let result = '';
+
+  for (let i = 1; i < newSource.length; i++) {
+    if (lastSymbol === newSource[i]) {
+      count++;
+    } else if (lastSymbol !== newSource[i] && count === 1) {
+      result += lastSymbol;
+      lastSymbol = newSource[i];
+      count = 1;
+    } else if (lastSymbol !== newSource[i] && count > 1) {
+      result += lastSymbol + String(count);
+      lastSymbol = newSource[i];
+      count = 1;
+    }
+  }
+
+  return result;
 }
 
 module.exports = rleCompress;
