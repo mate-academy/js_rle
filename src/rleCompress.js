@@ -31,12 +31,21 @@ function rleCompress(source) {
     if (currentLetter === source[i]) {
       ++count;
     } else {
-      count > 1 ? result += currentLetter + count : result += currentLetter;
+      if (count > 1) {
+        result += currentLetter + count;
+      } else {
+        result += currentLetter;
+      }
       count = 1;
       currentLetter = source[i];
     }
   }
-  count > 1 ? result += currentLetter + count : result += currentLetter;
+
+  if (count > 1) {
+    result += currentLetter + count;
+  } else {
+    result += currentLetter;
+  }
 
   return result;
 }
