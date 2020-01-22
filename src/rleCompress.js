@@ -29,7 +29,7 @@ function rleCompress(source) {
     }
 
     if ((sourceArr[i] === sourceArr[i - 1])
-    && (sourceArr[i] !== sourceArr[i + 1])) {
+      && (sourceArr[i] !== sourceArr[i + 1])) {
       sourceArr.splice(i - counter, ++counter, letter + Number(counter));
       counter = 0;
       i = 0;
