@@ -26,11 +26,11 @@ function rleCompress(source) {
     if (source[i] === source[i + 1]) {
       counter += 1;
     } else if (counter > 1) {
-      compressedString += (source[i]);
-      compressedString += (counter);
+      compressedString += source[i];
+      compressedString += counter;
       counter = 1;
     } else {
-      compressedString += (source[i]);
+      compressedString += source[i];
     }
   }
 
