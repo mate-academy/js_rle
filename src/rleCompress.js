@@ -18,21 +18,20 @@
  * @return {string}
  */
 function rleCompress(source) {
-  const result = source.split('');
+  let result = '';
+  let counter = 1;
 
-  for (let i = 0; i < result.length; i++) {
-    let counter = 1;
-
-    if (result[i - 1] === result[i]) {
-      while (result[i - 1] === result[i]) {
-        result.splice(i, 1);
-        counter++;
-      }
-      result.splice(i, 0, counter);
+  for (let i = 0; i < source.length; i++) {
+    if (source[i] === source[i + 1]) {
+      counter++;
+    } else if (counter > 1) {
+      result += source[i] + counter;
+      counter = 1;
+    } else {
+      result += source[i];
     }
   }
 
-  return result.join('');
+  return result;
 }
-
 module.exports = rleCompress;
