@@ -18,7 +18,29 @@
  * @return {string}
  */
 function rleCompress(source) {
-  // write code here
+  if (source === '') {
+    return '';
+  }
+
+  if (source.length === 1) {
+    return source;
+  }
+
+  const matchedLetters = source.match(/(.)\1+/g)
+    .sort((a, b) => b.length - a.length);
+  const map = {};
+  const regExp = new RegExp(matchedLetters.join('|'), 'gi');
+  let result = '';
+
+  for (const letter of matchedLetters) {
+    map[letter] = letter[0] + letter.length;
+  }
+
+  result = source.replace(regExp, function(matched) {
+    return map[matched];
+  });
+
+  return result;
 }
 
 module.exports = rleCompress;
