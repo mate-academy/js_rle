@@ -18,13 +18,21 @@
  * @return {string}
  */
 function rleCompress(source) {
-  for (let char of source.split('')) {
-    let regex = new RegExp(`${char + "{2,}"}`, );
-    if (source.match(regex) !== null) {
-      source = source.replace(regex, `${char + source.match(regex)[0].length}`);
+  let newSource = "";
+  for (let i = 0; i < source.length ; i++) {
+    let counter = 1;
+    while (source[i] === source[i + 1]) {
+        counter++;
+        i++;
+    }
+    if (counter > 1) {
+      newSource += source[i] + `${counter}`;//source.replace(source.slice(i + 1, i + counter + 1), counter);
+    }
+    else {
+      newSource += source[i];
     }
   }
-  return source;
+  return newSource;
 }
 
 module.exports = rleCompress;
