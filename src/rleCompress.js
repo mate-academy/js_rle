@@ -18,7 +18,13 @@
  * @return {string}
  */
 function rleCompress(source) {
-  // write code here
+  for (let char of source.split('')) {
+    let regex = new RegExp(`${char + "{2,}"}`, );
+    if (source.match(regex) !== null) {
+      source = source.replace(regex, `${char + source.match(regex)[0].length}`);
+    }
+  }
+  return source;
 }
 
 module.exports = rleCompress;
