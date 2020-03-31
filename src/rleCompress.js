@@ -18,7 +18,9 @@
  * @return {string}
  */
 function rleCompress(source) {
-  // write code here
+  return source.replace(/(.)\1+/g, (match, letter) => {
+    return letter + match.length;
+  });
 }
 
 module.exports = rleCompress;
