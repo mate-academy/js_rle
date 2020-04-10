@@ -18,7 +18,24 @@
  * @return {string}
  */
 function rleCompress(source) {
-  // write code here
+  const str = source + ' ';
+  let sortAbc = '';
+  let count = 1;
+
+  for (let i = 0; i < str.length - 1; i++) {
+    if (str[i] === str[i + 1]) {
+      count++;
+    } else {
+      sortAbc += str[i];
+
+      if (count !== 1) {
+        sortAbc += String(count);
+        count = 1;
+      }
+    }
+  }
+
+  return sortAbc;
 }
 
 module.exports = rleCompress;
