@@ -19,6 +19,23 @@
  */
 function rleCompress(source) {
   // write code here
+  let letterCounter = 1;
+  let res = '';
+
+  for (let i = 0; i < source.length; i++) {
+    if (source[i] !== source[i + 1]) {
+      res += source[i];
+    } else {
+      while (source[i] === source[i + letterCounter]) {
+        letterCounter++;
+      }
+      res += source[i] + letterCounter;
+    }
+    i += letterCounter - 1;
+    letterCounter = 1;
+  }
+
+  return res;
 }
 
 module.exports = rleCompress;
