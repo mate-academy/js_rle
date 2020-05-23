@@ -41,5 +41,4 @@ function rleCompress(source) {
   return compressedString;
 }
 
-console.log(rleCompress('AVVVBBBVVXDHJFFFFDDDDDDHAAAAJJJDDSLSSSDDDD'));
 module.exports = rleCompress;
