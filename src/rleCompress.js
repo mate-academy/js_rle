@@ -23,8 +23,8 @@ function rleCompress(source) {
   let currentSymbol = source[0];
   let groupLength = 0;
 
-  if (!source.length) {
-    return '';
+  if (source.length < 2) {
+    return source;
   }
 
   for (let i = 0; i < source.length; i++) {
