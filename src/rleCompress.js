@@ -19,6 +19,36 @@
  */
 function rleCompress(source) {
   // write code here
+  let readOff = '';
+  let currentSymbol = source[0];
+  let groupLength = 0;
+
+  if (!source.length) {
+    return '';
+  }
+
+  for (let i = 0; i < source.length; i++) {
+    if (source[i] === currentSymbol) {
+      groupLength++;
+    } else {
+      if (groupLength > 1) {
+        readOff += currentSymbol + groupLength;
+      } else {
+        readOff += currentSymbol;
+      }
+      currentSymbol = source[i];
+      groupLength = 1;
+    }
+  }
+
+  if (groupLength < 2) {
+    readOff += currentSymbol;
+  } else {
+    readOff += currentSymbol + groupLength;
+  }
+
+  return readOff;
 }
+rleCompress('ABBB');
 
 module.exports = rleCompress;
