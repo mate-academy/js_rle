@@ -22,21 +22,21 @@ function rleCompress(source) {
   let count = 0;
 
   for (let i = 0; i <= source.length; i++) {
-    if (
-      (source[i] !== source[i + 1]) && (source[i] !== source[i - 1])
-    ) {
-      answer += source[i];
+    //  тепер ми одвічно додаємо дані в лічильник
+    count++;
+    //  доки сусідні букви не припинять повторюватись
+
+    if (source[i] !== source[i + 1]) {
+      if (count >= 2) {
+        //  Якщо лічильник перевищив двійку, то його слід записати у відповідь.
+        answer += source[i] + count;
+      } else {
+        //  інакше, число лічильника, просто проігноруємо.
+        answer += source[i];
+      };
+      //  і онулимо його
       count = 0;
-    } else if (
-      ((source[i] === source[i + 1]) && (source[i] !== source[i - 1])
-      ) || (
-        (source[i] === source[i + 1]) && (source[i] === source[i - 1]))
-    ) {
-      count++;
-    } else {
-      answer += source[i] + (count + 1);
-      count = 0;
-    }
+    };
   }
 
   return answer;
