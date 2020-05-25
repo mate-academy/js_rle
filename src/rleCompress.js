@@ -19,10 +19,10 @@
  */
 function rleCompress(source) {
   let currentLetter = source[0];
-  let counter = 0;
+  let counter = 1;
   let currentString = '';
 
-  for (let i = 0; i <= source.length; i++) {
+  for (let i = 1; i <= source.length; i++) {
     if (source[i] === currentLetter) {
       counter++;
     } else if (source[i] !== currentLetter) {
