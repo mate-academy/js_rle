@@ -18,14 +18,13 @@
  * @return {string}
  */
 function rleCompress(source) {
-  // write code here
+  if (!source) {
+    return '';
+  }
+
   let readOff = '';
   let currentSymbol = source[0];
   let groupLength = 0;
-
-  if (source.length < 2) {
-    return source;
-  }
 
   for (let i = 0; i < source.length; i++) {
     if (source[i] === currentSymbol) {
@@ -49,6 +48,5 @@ function rleCompress(source) {
 
   return readOff;
 }
-rleCompress('ABBB');
 
 module.exports = rleCompress;
