@@ -18,20 +18,18 @@
  * @return {string}
  */
 function rleCompress(source) {
-  let count = 0;
+  let counter = 1;
   let compressed = '';
 
   for (let i = 0; i < source.length; i++) {
-    count = 1;
-
-    for (let j = i; j < source.length; j++) {
-      if (source[i] !== source[j + 1]) {
-        break;
-      }
-      count++;
-      i++;
+    if (source[i] === source[i + 1]) {
+      counter++;
+    } else if (counter === 1) {
+      compressed += source[i];
+    } else {
+      compressed += source[i] + counter;
+      counter = 1;
     }
-    compressed += count === 1 ? source[i] : source[i] + count;
   }
 
   return compressed;
