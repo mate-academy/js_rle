@@ -22,7 +22,7 @@ function rleCompress(source) {
     return '';
   }
 
-  let readOff = '';
+  let compressedString = '';
   let currentSymbol = source[0];
   let groupLength = 1;
 
@@ -31,9 +31,9 @@ function rleCompress(source) {
       groupLength++;
     } else {
       if (groupLength > 1) {
-        readOff += currentSymbol + groupLength;
+        compressedString += currentSymbol + groupLength;
       } else {
-        readOff += currentSymbol;
+        compressedString += currentSymbol;
       }
       currentSymbol = source[i];
       groupLength = 1;
@@ -41,12 +41,12 @@ function rleCompress(source) {
   }
 
   if (groupLength < 2) {
-    readOff += currentSymbol;
+    compressedString += currentSymbol;
   } else {
-    readOff += currentSymbol + groupLength;
+    compressedString += currentSymbol + groupLength;
   }
 
-  return readOff;
+  return compressedString;
 }
 
 module.exports = rleCompress;
