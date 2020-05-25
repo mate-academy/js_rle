@@ -24,9 +24,9 @@ function rleCompress(source) {
 
   let readOff = '';
   let currentSymbol = source[0];
-  let groupLength = 0;
+  let groupLength = 1;
 
-  for (let i = 0; i < source.length; i++) {
+  for (let i = 1; i < source.length; i++) {
     if (source[i] === currentSymbol) {
       groupLength++;
     } else {
