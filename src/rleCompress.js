@@ -17,6 +17,7 @@
  *
  * @return {string}
  */
+
 function rleCompress(source) {
   let answer = '';
   let count = 0;
