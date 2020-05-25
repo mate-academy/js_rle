@@ -17,25 +17,29 @@
  *
  * @return {string}
  */
+
 function rleCompress(source) {
   // write code here
   let letterCounter = 1;
-  let res = '';
+  let compressedSource = '';
 
   for (let i = 0; i < source.length; i++) {
     if (source[i] !== source[i + 1]) {
-      res += source[i];
+      compressedSource += source[i];
     } else {
-      while (source[i] === source[i + letterCounter]) {
+      if (source[i] === source[i + 1]) {
         letterCounter++;
       }
-      res += source[i] + letterCounter;
+
+      if (source[i + 1] !== source[i + 2]) {
+        compressedSource += source[i + 1] + letterCounter;
+        letterCounter = 1;
+        i += letterCounter;
+      }
     }
-    i += letterCounter - 1;
-    letterCounter = 1;
   }
 
-  return res;
+  return compressedSource;
 }
 
 module.exports = rleCompress;
