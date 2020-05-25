@@ -20,21 +20,21 @@
 function rleCompress(source) {
   const newSource = source;
 
-  let res = '';
-  let count = 1;
+  let resultString = '';
+  let counter = 1;
 
   for (let i = 0; i < newSource.length; i++) {
     if (newSource[i] === newSource[i + 1]) {
-      count++;
-    } else if (newSource[i] !== newSource[i + 1] && count === 1) {
-      res += newSource[i];
+      counter++;
+    } else if (newSource[i] !== newSource[i + 1] && counter === 1) {
+      resultString += newSource[i];
     } else {
-      res += newSource[i] + count;
-      count = 1;
+      resultString += newSource[i] + counter;
+      counter = 1;
     }
   }
 
-  return res;
+  return resultString;
 }
 
 module.exports = rleCompress;
