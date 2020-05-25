@@ -18,22 +18,23 @@
  * @return {string}
  */
 function rleCompress(source) {
-  const res = [];
-  const arrSource = source.split('');
+  const newSource = source;
+
+  let res = '';
   let count = 1;
 
-  for (let i = 0; i < arrSource.length; i++) {
-    if (arrSource[i] === arrSource[i + 1]) {
+  for (let i = 0; i < newSource.length; i++) {
+    if (newSource[i] === newSource[i + 1]) {
       count++;
-    } else if (arrSource[i] !== arrSource[i + 1] && count === 1) {
-      res.push(arrSource[i]);
+    } else if (newSource[i] !== newSource[i + 1] && count === 1) {
+      res += newSource[i];
     } else {
-      res.push(arrSource[i], count);
+      res += newSource[i] + count;
       count = 1;
     }
   }
 
-  return res.join('');
+  return res;
 }
 
 module.exports = rleCompress;
