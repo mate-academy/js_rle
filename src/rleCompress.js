@@ -18,22 +18,22 @@
  * @return {string}
  */
 function rleCompress(source) {
-  let curElement;
+  let currentElement;
   let string = '';
-  let groupCount = 1;
+  let counter = 1;
 
   for (let i = 0; i < source.length; i++) {
     if (source[i] === source[i + 1]) {
-      groupCount++;
+      counter++;
     } else if (source[i] !== source[i + 1] || i === source.length) {
-      curElement = source[i];
+      currentElement = source[i];
 
-      if (groupCount > 1) {
-        string = string + `${curElement}${groupCount}`;
+      if (counter > 1) {
+        string = string + `${currentElement}${counter}`;
       } else {
-        string = string + `${curElement}`;
+        string = string + `${currentElement}`;
       }
-      groupCount = 1;
+      counter = 1;
     }
   }
 
