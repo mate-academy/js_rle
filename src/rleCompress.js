@@ -19,25 +19,20 @@
  */
 function rleCompress(source) {
   let result = '';
-  let count = 1;
+  let counter = 1;
 
-  function letterCount(char) {
-    if (source.charAt(char) !== source.charAt(char + 1)) {
-      if (count < 2) {
-        return source.charAt(char);
-      } else {
-        return source.charAt(char) + count;
-      }
-    } else {
-      count++;
-
-      return letterCount(char + 1);
+  for (let i = 0; i < source.length; i++) {
+    if (source[i] === source[i + 1]) {
+      counter++;
+      continue;
     }
-  }
 
-  for (let i = 0; i < source.length; i += count) {
-    count = 1;
-    result += letterCount(i);
+    if (counter === 1) {
+      result += source[i];
+    } else {
+      result += source[i] + counter;
+    }
+    counter = 1;
   }
 
   return result;
