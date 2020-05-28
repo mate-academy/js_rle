@@ -18,7 +18,23 @@
  * @return {string}
  */
 function rleCompress(source) {
-  // write code here
+  const pattern = /(\w)(\1)*/g;
+  const groups = source.match(pattern);
+  let validString = '';
+
+  if (source.length === 0) {
+    return '';
+  }
+
+  for (let i = 0; i < groups.length; i++) {
+    if (groups[i].length === 1) {
+      validString += groups[i][0];
+    } else {
+      validString += groups[i][0] + groups[i].length;
+    }
+  }
+
+  return validString;
 }
 
 module.exports = rleCompress;
