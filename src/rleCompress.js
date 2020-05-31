@@ -18,7 +18,19 @@
  * @return {string}
  */
 function rleCompress(source) {
-  // write code here
+  let count = 1;
+  const result = [];
+
+  for (let i = 0; i < source.length; i++) {
+    if (source[i] === source[i + 1]) {
+      count++;
+    } else {
+      result.push(source[i], count);
+      count = 1;
+    }
+  }
+
+  return result.join('').replace(/1(?=[A-Z]|\b)/ig, '');
 }
 
 module.exports = rleCompress;
