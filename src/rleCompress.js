@@ -19,6 +19,26 @@
  */
 function rleCompress(source) {
   // write code here
+  let compressedString = '';
+  let currentElement = '';
+  let counter = 0;
+
+  for (let i = 0; i < source.length; i++) {
+    currentElement = source[i];
+    counter++;
+
+    // check if the next element is different from the current.
+    if (source[i + 1] !== currentElement) {
+      if (counter >= 2) {
+        compressedString += currentElement + counter;
+      } else {
+        compressedString += currentElement;
+      }
+      counter = 0; // reset counter
+    }
+  }
+
+  return compressedString;
 }
 
 module.exports = rleCompress;
