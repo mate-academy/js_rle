@@ -1,6 +1,7 @@
 'use strict';
 
 /**
+ *  * fs_on_dec19_salogubova
  * Implement rleCompress function:
  *
  * Function takes string argument and returns compressed string.
@@ -18,7 +19,22 @@
  * @return {string}
  */
 function rleCompress(source) {
-  // write code here
+  let compressedString = '';
+  let counter = 1;
+
+  for (let i = 0; i < source.length; i++) {
+    if (source[i] === source[i + 1]) {
+      counter += 1;
+    } else if (counter > 1) {
+      compressedString += source[i];
+      compressedString += counter;
+      counter = 1;
+    } else {
+      compressedString += source[i];
+    }
+  }
+
+  return compressedString;
 }
 
 module.exports = rleCompress;
