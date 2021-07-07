@@ -18,7 +18,25 @@
  * @return {string}
  */
 function rleCompress(source) {
-  // write code here
+  const sourceArr = source.split('');
+  let counter = 0;
+  let letter = '';
+
+  for (let i = 0; i < sourceArr.length; i++) {
+    if (sourceArr[i] === sourceArr[i + 1]) {
+      counter++;
+      letter = sourceArr[i];
+    }
+
+    if ((sourceArr[i] === sourceArr[i - 1])
+      && (sourceArr[i] !== sourceArr[i + 1])) {
+      sourceArr.splice(i - counter, ++counter, letter + Number(counter));
+      counter = 0;
+      i = 0;
+    }
+  }
+
+  return sourceArr.join('');
 }
 
 module.exports = rleCompress;
