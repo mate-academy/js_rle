@@ -18,7 +18,27 @@
  * @return {string}
  */
 function rleCompress(source) {
-  // write code here
-}
+  const arrayToCompress = [...source];
+  const matchedElementsArray = [];
 
+  const callback = (item, index, arr) => {
+    if (arr[index] === arr[index - 1]) {
+      matchedElementsArray.push(index);
+    }
+  };
+  arrayToCompress.forEach(callback);
+
+  let count = 1;
+  for (let i = matchedElementsArray.length - 1; i > -1; i--) {
+    if (matchedElementsArray[i] - 1 === matchedElementsArray[i - 1]) {
+      count++;
+    } else {
+      arrayToCompress.splice(matchedElementsArray[i], count, count + 1);
+      count = 1;
+    };
+  }
+
+  return arrayToCompress.join('');
+}
+rleCompress('AVVVBBBVVXDHJFFFFDDDDDDHAAAAJJJDDSLSSSDDDD');
 module.exports = rleCompress;
