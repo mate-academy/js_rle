@@ -19,6 +19,22 @@
  */
 function rleCompress(source) {
   // write code here
+  const compressedArr = [];
+  let counter = 1;
+
+  for (let i = 0; i < source.length; i += 1) {
+    if (source[i] === source[i + 1]) {
+      counter += 1;
+    } else if (counter > 1) {
+      compressedArr.push(source[i]);
+      compressedArr.push(counter);
+      counter = 1;
+    } else {
+      compressedArr.push(source[i]);
+    }
+  }
+
+  return compressedArr.join('');
 }
 
 module.exports = rleCompress;
