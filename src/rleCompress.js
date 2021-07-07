@@ -18,7 +18,21 @@
  * @return {string}
  */
 function rleCompress(source) {
-  // write code here
+  if (!source || source === '') {
+    return '';
+  }
+
+  const compressed = source.match(/([A-Z])\1*/gi);
+
+  return compressed
+    .map(char => {
+      if (char.length === 1) {
+        return char;
+      }
+
+      return [char.charAt(0), char.length].join('');
+    })
+    .join('');
 }
 
 module.exports = rleCompress;
