@@ -1,3 +1,4 @@
+// jshint esversion:6
 'use strict';
 
 /**
@@ -18,7 +19,27 @@
  * @return {string}
  */
 function rleCompress(source) {
-  // write code here
+  const sourceArr = source.split('');
+  let isCount = false;
+  let count = 0;
+  let holder = 0;
+  const answer = [];
+
+  for (let i = 0; i < sourceArr.length; i++) {
+    if (sourceArr[i] === sourceArr[i + 1]) {
+      count++;
+      holder = i;
+      isCount = true;
+    } else if (!isCount) {
+      answer.push(sourceArr[i]);
+    } else {
+      answer.push(sourceArr[holder]);
+      answer.push(count + 1);
+      isCount = false;
+      count = 0;
+    }
+  }
+  return answer.join('');
 }
 
 module.exports = rleCompress;
