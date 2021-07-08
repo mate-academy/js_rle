@@ -18,7 +18,35 @@
  * @return {string}
  */
 function rleCompress(source) {
-  // write code here
+  if (!source) {
+    return '';
+  }
+
+  let compressedString = '';
+  let currentSymbol = source[0];
+  let groupLength = 1;
+
+  for (let i = 1; i < source.length; i++) {
+    if (source[i] === currentSymbol) {
+      groupLength++;
+    } else {
+      if (groupLength > 1) {
+        compressedString += currentSymbol + groupLength;
+      } else {
+        compressedString += currentSymbol;
+      }
+      currentSymbol = source[i];
+      groupLength = 1;
+    }
+  }
+
+  if (groupLength < 2) {
+    compressedString += currentSymbol;
+  } else {
+    compressedString += currentSymbol + groupLength;
+  }
+
+  return compressedString;
 }
 
 module.exports = rleCompress;
