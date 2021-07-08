@@ -19,6 +19,21 @@
  */
 function rleCompress(source) {
   // write code here
+  let resultString = '';
+  for (let i = 0; i < source.length; i++) {
+    let duplCounter = 1;
+    while (i < source.length && source.charAt(i) === source.charAt(i + 1)) {
+      duplCounter++;
+      i++;
+    }
+
+    resultString += source.charAt(i);
+    if (duplCounter > 1) {
+      resultString += duplCounter;
+    }
+  }
+
+  return resultString;
 }
 
 module.exports = rleCompress;
