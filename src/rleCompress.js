@@ -18,7 +18,25 @@
  * @return {string}
  */
 function rleCompress(source) {
-  // write code here
+  const letters = source.split('');
+  const compressed = [];
+  let quantityOfDouble = 1;
+
+  for (let i = 0; i < letters.length; i += 1) {
+    if (letters[i] === letters[i + 1]) {
+      quantityOfDouble += 1;
+    } else {
+      if (quantityOfDouble === 1) {
+        compressed.push(letters[i]);
+      } else {
+        compressed.push(letters[i]);
+        compressed.push(quantityOfDouble);
+        quantityOfDouble = 1;
+      }
+    }
+  }
+
+  return compressed.join('');
 }
 
 module.exports = rleCompress;
